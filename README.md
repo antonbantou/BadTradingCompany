@@ -9,6 +9,13 @@ we were unable to find a third, it has become a one man project. I don't persona
 and frankly, would rather I work on this myself. Don't want to work on a project that I
 had no say in deciding the topic.
 
+The part of the program that was offloaded to my friend before he quit it (by nature of him 
+being unable to pass it), the program to retrieve the prices of cryptocurrency and generally
+learning how to work with the API was returned to me unfinished and nonfunctional, not to mention
+grossly innefficient. Given that it was given to me on thursday night, I hope you understand my
+needing a spot of extra time to learn and set up a functional program to communicate to an API and
+retrieve the prices (though even that is in the broadest terms).
+
 As it is, the program is barebones - most of my time was spent figuring out tkinter, and trying
 to get the graph to update live. Not much luck yet - may simply implement a refresh button and 
 make my life that much simpler. The program supports making accounts, which it saves locally on a txt
