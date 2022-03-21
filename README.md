@@ -1,0 +1,2 @@
+# BadTradingCompany
+University Project.
