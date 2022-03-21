@@ -43,7 +43,6 @@ bannerLabel.pack()
 
 f = Figure(figsize=(5,5), dpi=100)
 a = f.add_subplot(111)
-#subprocess.call("prices.py", shell=True)
 
 
 #main screen - trading, prices, wallet, etc
@@ -64,8 +63,31 @@ def animate(i):
     a.clear()
     a.plot(xList, yList)
 
-    
+def prices():
+    url = "http://api.coincap.io/v2/assets/bitcoin/history?interval=m1"
+
+    payload = {}
+    headers = {}
+
+    response = requests.request("GET", url, headers = headers, data = payload)
+
+    json_data = json.loads(response.text.encode("utf8"))
+    bitcoin_data = json_data["data"]
+
+    #Turning the raw json data into a dataframe so matlab doesnt piss its pants
+    bitcoindf = pd.DataFrame(bitcoin_data)
+
+
+    #Get rid of time column, obsolete when we have date
+    bitcoindf = pd.DataFrame(bitcoin_data, columns=['time', 'priceUsd'])
+
+    #saving data to the csv
+    bitcoindf.to_csv("bitcoin-usd.csv", index=False)
+
+#Drawing the main graph after login
 def mainscreen():
+    prices()
+    
     canvas = FigureCanvasTkAgg(f, root)
     canvas.draw()
     canvas.get_tk_widget().grid(row = 1, column = 2)
